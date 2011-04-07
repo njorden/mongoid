@@ -122,6 +122,12 @@ describe Mongoid::Serialization do
               end
             end
           end
+          
+          it "does not modify the options hash" do
+            opts = {:include => :addresses}
+            person.serializable_hash(opts)
+            opts.should == {:include => :addresses}
+          end
         end
 
         context "when including an embeds one" do

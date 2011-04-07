@@ -27,7 +27,7 @@ module Mongoid # :nodoc:
     #
     # @since 2.0.0.rc.6
     def serializable_hash(options = nil)
-      options ||= {}
+      options = options.try(:clone) || {}
       super(options).tap do |attrs|
         serialize_relations(attrs, options) if options[:include]
       end
