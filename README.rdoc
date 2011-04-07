@@ -1,3 +1,6 @@
+= This Fork
+Fixes a serialization issue where the options were being modified by serializable_hash so that subsequent calls with the same options would be inconsistent. This is particularly problematic when as_json is being called on an array of objects because the serialization of the first element destroys the options for the others. 
+
 = Overview
 
 == About Mongoid
